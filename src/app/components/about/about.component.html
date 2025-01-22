@@ -1,0 +1,34 @@
+<section class="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="bio">
+          <h3>Who I Am</h3>
+          <p>
+            I am a passionate Frontend Developer specializing in Angular, with a strong focus on building dynamic, responsive, 
+            and user-friendly web applications. My mission is to craft solutions that seamlessly blend functionality with 
+            visually appealing designs, providing exceptional user experiences.
+          </p>
+          <p>
+            With expertise in Angular's ecosystem, including RxJS and state management tools like NgRx, I excel at creating 
+            scalable and maintainable applications. From designing pixel-perfect interfaces to optimizing performance and 
+            implementing advanced features, I bring a comprehensive approach to development.
+          </p>
+          <p>
+            Committed to staying ahead in this ever-evolving field, I continually explore the latest tools and techniques 
+            in web development. Solving complex challenges and transforming innovative ideas into impactful applications 
+            is my greatest motivation.
+          </p>
+          
+        </div>
+        <div class="skills">
+          <h3>Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-item" *ngFor="let skill of skills">
+              {{skill}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

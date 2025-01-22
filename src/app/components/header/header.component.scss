@@ -1,0 +1,109 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--secondary-color);
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    height: 70px;
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      
+      a {
+        color: var(--text-white);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        img {
+          height: 35px;
+          width: auto;
+        }
+
+        &:hover {
+          color: var(--accent-color);
+        }
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+
+      li a {
+        color: var(--text-white);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: var(--text-white);
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        &.active {
+          color: var(--text-white);
+          background-color: var(--primary-color);
+        }
+      }
+    }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background-color: var(--text-white);
+        margin: 6px 0;
+        transition: 0.3s;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    .mobile-menu {
+      display: block !important;
+    }
+
+    .nav-links {
+      display: none !important;
+      
+      &.active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--secondary-color);
+        padding: 1rem;
+        box-shadow: var(--shadow-lg);
+
+        li a {
+          display: block;
+          padding: 1rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
