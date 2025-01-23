@@ -17,7 +17,7 @@ export class ProjectsComponent {
     {
       title: 'Wave LIS',
       description: 'Built a dynamic real estate platform with Angular, enabling seamless property listings, client management, and transaction tracking. Utilized TypeScript, ngx-bootstrap, and REST API for a responsive, intuitive, and scalable solution.',
-      image: 'assets/project1.jpg',
+      image: 'assets/images/real-state.png',
       technologies: ['Angular', 'TypeScript', 'ngx-bootstrap', 'REST API'],
       githubLink: 'https://github.com/yourusername/real-estate-platform',
       liveLink: 'http://103.190.95.89:9409/'
