@@ -13,8 +13,9 @@ export class AboutComponent {
     'TypeScript',
     'Angular',
     'Bootstrap',
-    'Angular Material',
+    'Material Ui',
     'Node.js',
+    'PrimeNg'
 
     // Add more skills
   ];
