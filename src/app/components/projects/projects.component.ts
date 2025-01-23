@@ -25,7 +25,7 @@ export class ProjectsComponent {
     {
       title: 'Panther GPS - Vehicle Management System',
       description: 'Developed an admin panel for managing government vehicle operations, featuring tools for vehicle tracking, maintenance scheduling, and resource allocation. Designed an intuitive UI and integrated REST API for seamless functionality, enhancing efficiency and resource management.',
-      image: 'assets/project2.jpg',
+      image: 'assets/images/panther-gps.jpg',
       technologies: ['Angular', 'TypeScript', 'ngx-bootstrap', 'REST API'],
       githubLink: 'https://github.com/yourusername/panther-gps',
       liveLink: 'https://panthergps.com'
@@ -33,7 +33,7 @@ export class ProjectsComponent {
     {
       title: 'SkyITMS - Intelligent Transport Management System',
       description: 'Developed a web-based solution to streamline government bus operations with features like scheduling, real-time monitoring, and detailed reporting. Designed intuitive UI components using Angular and integrated RESTful APIs for seamless data exchange and real-time synchronization, enhancing operational efficiency and decision-making.',
-      image: 'assets/project3.jpg',
+      image: 'assets/images/sky-itms.jpg',
       technologies: ['Angular', 'TypeScript', 'ngx-bootstrap', 'REST API'],
       githubLink: 'https://github.com/yourusername/skyitms',
       liveLink: 'http://103.89.44.153:8081/#/login'
@@ -41,7 +41,7 @@ export class ProjectsComponent {
     {
       title: 'WEMS - Wave Employee Management System',
       description: 'Developed a feature-rich platform to streamline HR functions like employee records, attendance tracking, payroll management, and performance evaluations. Designed with scalability and efficiency in mind, WEMS automates HR processes, reducing workload and enhancing communication.',
-      image: 'assets/project4.jpg',
+      image: 'assets/images/wems-image.png',
       technologies: ['Angular', 'TypeScript', 'ngx-bootstrap', 'REST API'],
       githubLink: 'https://github.com/yourusername/wems',
       liveLink: 'https://wems.wavecorp.in:9092/'
@@ -49,7 +49,7 @@ export class ProjectsComponent {
     {
       title: 'LMT - Locate My Team',
       description: 'Developed a web platform to track employee attendance and location in real-time, improving team coordination and administrative efficiency. Integrated RESTful APIs for real-time synchronization and designed intuitive UI components using Angular to ensure a seamless user experience.',
-      image: 'assets/project5.jpg',
+      image: 'assets/images/lmt-image.png',
       technologies: ['Angular', 'TypeScript', 'ngx-bootstrap', 'REST API'],
       githubLink: 'https://github.com/yourusername/lmt',
       liveLink: 'http://103.89.44.59:9094/login'
@@ -57,7 +57,7 @@ export class ProjectsComponent {
     {
       title: 'CLINICIAN - Healthcare Management Platform',
       description: 'Developed a user-friendly platform connecting patients with doctors, offering features like appointment booking, prescription management, and patient record access. The system is divided into Patient, Doctor, and Admin modules to streamline healthcare interactions and improve accessibility.',
-      image: 'assets/project6.jpg',
+      image: 'assets/images/clinician.png',
       technologies: ['Angular', 'TypeScript', 'Angular Material', 'ngx-bootstrap', 'REST API'],
       githubLink: 'https://github.com/yourusername/clinician',
       liveLink: 'https://admin.cliniciann.com/'

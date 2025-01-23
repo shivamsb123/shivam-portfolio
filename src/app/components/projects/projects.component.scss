@@ -25,6 +25,9 @@
         overflow: hidden;
         box-shadow: var(--shadow-md);
         transition: transform 0.3s ease;
+        display: flex; /* Added */
+        flex-direction: column; /* Added */
+        height: 100%; /* Added */
 
         &:hover {
           transform: translateY(-5px);
@@ -49,6 +52,10 @@
 
         .project-content {
           padding: 1.5rem;
+          display: flex; /* Added */
+          flex-direction: column; /* Added */
+          flex: 1; /* Added */
+          justify-content: space-between; /* Added */
 
           h3 {
             color: var(--text-dark);
@@ -80,6 +87,9 @@
           .project-links {
             display: flex;
             gap: 1rem;
+            margin-top: auto; /* Added */
+            padding-top: 1rem; /* Added */
+            border-top: 1px solid rgba(0,0,0,0.1); /* Added */
 
             .btn {
               padding: 0.5rem 1rem;
@@ -87,11 +97,10 @@
               text-decoration: none;
               font-weight: 500;
               transition: all 0.3s ease;
+              flex: 1; /* Added - makes buttons equal width */
+              text-align: center; /* Added */
 
               &:first-child {
-                background-color: var(--primary-color);
-                color: var(--text-white);
-
                 &:hover {
                   background-color: var(--primary-dark);
                 }
