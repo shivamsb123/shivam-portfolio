@@ -1,12 +1,18 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-top: 70px; // Height of header
+  margin-bottom: 60px; // Height of footer
+  overflow-y: auto;
+
+  .section {
     min-height: 100vh;
+    padding: 2rem;
+    scroll-margin-top: 70px; // This is important for smooth scrolling
   }
-  
-  .main-content {
-    flex: 1;
-    overflow-y: auto;
-    padding-top: 70px; /* Height of header */
-    padding-bottom: 60px; /* Height of footer */
-  }
+}

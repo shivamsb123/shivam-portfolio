@@ -37,6 +37,49 @@ footer {
         color: var(--text-light);
         font-size: 0.875rem;
       }
+
+      .scroll-top {
+        background-color: var(--primary-color);
+        color: var(--text-white);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: var(--primary-dark);
+          transform: translateY(-3px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        i {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  footer {
+    .container {
+      .footer-content {
+        padding: 0 0.5rem;
+        
+        p {
+          display: none; /* Hide copyright on mobile */
+        }
+        
+        .social-links {
+          gap: 1rem;
+        }
+      }
     }
   }
 }

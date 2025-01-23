@@ -4,9 +4,10 @@
       <h1>Hi, I'm {{name}}</h1>
       <h2>{{title}}</h2>
       <p>{{description}}</p>
+      <!-- Update your CTA buttons section -->
       <div class="cta-buttons">
-        <a routerLink="/projects" class="btn primary">View My Work</a>
-        <a routerLink="/contact" class="btn secondary">Contact Me</a>
+        <a (click)="scrollToSection('projects')" class="btn primary" style="cursor: pointer;">View My Work</a>
+        <a (click)="scrollToSection('contact')" class="btn secondary" style="cursor: pointer;">Contact Me</a>
       </div>
     </div>
     <div class="hero-image">
