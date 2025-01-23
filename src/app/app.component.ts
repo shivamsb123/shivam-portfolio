@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'portfolio';
 
   constructor(private router: Router){
-    this.router.navigate(['/home']);
+    this.router.navigate(['']);
   }
 
 }
