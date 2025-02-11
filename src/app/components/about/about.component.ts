@@ -15,6 +15,7 @@ export class AboutComponent {
     'Bootstrap',
     'Material Ui',
     'Node.js',
+    'PostgreSQL',
     'PrimeNg'
 
     // Add more skills
