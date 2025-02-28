@@ -65,7 +65,7 @@
             <button 
               type="submit" 
               [disabled]="!contactForm.valid || isSubmitting">
-              {{ isSubmitting ? 'Sending...' : 'Send Email & Whatsapp' }}
+              {{ isSubmitting ? 'Sending...' : 'Send Email And Whatsapp' }}
             </button>
             <p class="submit-message" [class.success]="submitMessage.includes('success')" *ngIf="submitMessage">
               {{ submitMessage }}

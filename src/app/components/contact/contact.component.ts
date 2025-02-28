@@ -56,9 +56,10 @@ export class ContactComponent {
           this.submitMessage = 'Message sent successfully! I will get back to you soon.';
           this.contactForm.reset();
   
-          // Generate WhatsApp link
+          // Generate WhatsApp link with a static phone number
+          const phoneNumber = '8435533507'; // Replace with your static WhatsApp number
           const whatsappMessage = `Name: ${templateParams.from_name}\nEmail: ${templateParams.from_email}\nMessage: ${templateParams.message}`;
-          const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`;
+          const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
   
           // Check if the user is on a mobile device
           const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -68,7 +69,7 @@ export class ContactComponent {
             window.location.href = whatsappUrl;
           } else {
             // For desktop, try to open WhatsApp Web
-            const whatsappWebUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
+            const whatsappWebUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
   
             // Open WhatsApp Web in a new tab
             const newWindow = window.open(whatsappWebUrl, '_blank');
@@ -76,7 +77,7 @@ export class ContactComponent {
             // Check if the new window was successfully opened
             if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
               // If WhatsApp Web cannot be opened, show a QR code for scanning
-              this.showWhatsAppQRCode(whatsappMessage);
+              this.showWhatsAppQRCode(whatsappMessage, phoneNumber);
             }
           }
         } else {
@@ -91,9 +92,10 @@ export class ContactComponent {
     }
   }
   
-  showWhatsAppQRCode(message: string) {
-    // Generate a QR code for the WhatsApp Web URL
-    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`https://wa.me/?text=${message}`)}`;
+  showWhatsAppQRCode(message: string, phoneNumber: string) {
+    // Generate a QR code for the WhatsApp Web URL with the static phone number
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(whatsappUrl)}`;
   
     // Create a modal element
     const modal = document.createElement('div');
