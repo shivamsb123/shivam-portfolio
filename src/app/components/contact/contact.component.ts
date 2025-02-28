@@ -31,7 +31,7 @@ export class ContactComponent {
     if (this.contactForm.valid) {
       this.isSubmitting = true;
       this.submitMessage = '';
-
+  
       try {
         const templateParams = {
           from_name: this.contactForm.value.name,
@@ -41,19 +41,44 @@ export class ContactComponent {
           to_email: this.yourEmail,
           reply_to: this.contactForm.value.email
         };
-
+  
+        // Send the email using EmailJS
         const response = await emailjs.send(
           this.emailjsServiceId,
           this.emailjsTemplateId,
           templateParams,
           this.emailjsPublicKey
         );
-        console.log("response",response);
-        
-
+        console.log("response", response);
+  
         if (response.status === 200) {
+          // Email sent successfully
           this.submitMessage = 'Message sent successfully! I will get back to you soon.';
           this.contactForm.reset();
+  
+          // Generate WhatsApp link
+          const whatsappMessage = `Name: ${templateParams.from_name}\nEmail: ${templateParams.from_email}\nMessage: ${templateParams.message}`;
+          const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`;
+  
+          // Check if the user is on a mobile device
+          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+          if (isMobile) {
+            // Redirect to WhatsApp on mobile
+            window.location.href = whatsappUrl;
+          } else {
+            // For desktop, try to open WhatsApp Web
+            const whatsappWebUrl = `https://web.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
+  
+            // Open WhatsApp Web in a new tab
+            const newWindow = window.open(whatsappWebUrl, '_blank');
+  
+            // Check if the new window was successfully opened
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+              // If WhatsApp Web cannot be opened, show a QR code for scanning
+              this.showWhatsAppQRCode(whatsappMessage);
+            }
+          }
         } else {
           throw new Error('Failed to send message');
         }
@@ -65,4 +90,89 @@ export class ContactComponent {
       }
     }
   }
+  
+  showWhatsAppQRCode(message: string) {
+    // Generate a QR code for the WhatsApp Web URL
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`https://wa.me/?text=${message}`)}`;
+  
+    // Create a modal element
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+    modal.style.zIndex = '1000';
+  
+    // Create the QR code content
+    const qrCodeContent = document.createElement('div');
+    qrCodeContent.style.backgroundColor = 'white';
+    qrCodeContent.style.padding = '20px';
+    qrCodeContent.style.borderRadius = '10px';
+    qrCodeContent.style.textAlign = 'center';
+  
+    const qrCodeImage = document.createElement('img');
+    qrCodeImage.src = qrCodeUrl;
+    qrCodeImage.alt = 'WhatsApp QR Code';
+  
+    const qrCodeText = document.createElement('p');
+    qrCodeText.textContent = 'Scan this QR code with your phone to open WhatsApp.';
+    qrCodeText.style.marginTop = '20px';
+  
+    // Append elements to the modal
+    qrCodeContent.appendChild(qrCodeImage);
+    qrCodeContent.appendChild(qrCodeText);
+    modal.appendChild(qrCodeContent);
+  
+    // Add the modal to the body
+    document.body.appendChild(modal);
+  
+    // Close the modal when clicked outside
+    modal.addEventListener('click', () => {
+      document.body.removeChild(modal);
+    });
+  }
+
+  // async onSubmit() {
+  //   if (this.contactForm.valid) {
+  //     this.isSubmitting = true;
+  //     this.submitMessage = '';
+
+  //     try {
+  //       const templateParams = {
+  //         from_name: this.contactForm.value.name,
+  //         to_name: 'Shivam Singh',
+  //         from_email: this.contactForm.value.email,
+  //         message: this.contactForm.value.message,
+  //         to_email: this.yourEmail,
+  //         reply_to: this.contactForm.value.email
+  //       };
+
+  //       const response = await emailjs.send(
+  //         this.emailjsServiceId,
+  //         this.emailjsTemplateId,
+  //         templateParams,
+  //         this.emailjsPublicKey
+  //       );
+  //       console.log("response",response);
+        
+
+  //       if (response.status === 200) {
+  //         this.submitMessage = 'Message sent successfully! I will get back to you soon.';
+  //         this.contactForm.reset();
+  //       } else {
+  //         throw new Error('Failed to send message');
+  //       }
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //       this.submitMessage = 'Failed to send message. Please try again or email me directly.';
+  //     } finally {
+  //       this.isSubmitting = false;
+  //     }
+  //   }
+  // }
 }
